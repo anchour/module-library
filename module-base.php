@@ -1,12 +1,13 @@
 <?php if (have_rows('anchour_modules')): ?>
     <?php while (have_rows('anchour_modules')): the_row(); ?>
 
-        <section <?php apply_filters('App/Theme/PageRowAttributes', ''); ?>>
-            <div class="am-wrapper-1">
-                <div class="am-wrapper-2">
-                    <div class="am-wrapper-3">
+        <section <?=apply_filters('AML/ModuleAttributes', '')?>>
+            <div class="aml-wrapper-1">
+                <div class="aml-wrapper-2">
+                    <div class="aml-wrapper-3">
 
-                        <?php include 'module-templates/' . str_replace('_', '-', get_row_layout()) . '.php'; ?>
+                        <?php $layout = str_replace('_', '-', get_row_layout()); ?>
+                        <?php include $GLOBALS['aml_path'] . 'module-templates/' . $layout . '.php'; ?>
 
                     </div>
                 </div>

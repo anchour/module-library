@@ -6,13 +6,14 @@
  * License: none
  */
 
-/**
- * Post popularity feature
- */
+$aml_path = plugin_dir_path(__FILE__);
 
-function print_text( $content ) {
+include 'src/setup.php';
+include 'src/filters.php';
+
+function includeModules() {
     include 'module-base.php';
 }
 
-add_action( 'get_footer', 'print_text' );
+add_action( 'get_footer', 'includeModules' );
 ?>
