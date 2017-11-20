@@ -3,6 +3,13 @@
   background-position: center center;
   padding-top: 40px;
   padding-bottom: 40px;
+
+  &.am--padding-top-0 {
+    padding-top: 0;
+  }
+  &.am--padding-bottom-0 {
+    padding-bottom: 0;
+  }
 }
 
 .crust {
@@ -10,4 +17,26 @@
   padding-left: 15px;
   padding-right: 15px;
   margin: auto;
+}
+
+.am-flex-item-wrap {
+  .am--align-x-left & {
+    text-align: left;
+  }
+  .am--align-x-middle & {
+    text-align: center;
+  }
+  .am--align-x-right & {
+    text-align: right;
+  }
+
+  .am--align-y-top & {
+    align-items: flex-start;
+  }
+  .am--align-y-middle & {
+    align-items: center;
+  }
+  .am--align-y-bottom & {
+    align-items: flex-end;
+  }
 }

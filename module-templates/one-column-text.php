@@ -1,5 +1,7 @@
-<?php include $GLOBALS['aml_path'] . 'module-templates/_partials/title.php'; ?>
+<?php
+include $GLOBALS['partial_path'] . 'title.php';
 
-<?php include $GLOBALS['aml_path'] . 'module-templates/_partials/content.php'; ?>
+include $GLOBALS['partial_path'] . 'content.php';
 
-<?php include $GLOBALS['aml_path'] . 'module-templates/_partials/buttons.php'; ?>
+include $GLOBALS['partial_path'] . 'buttons.php';
+?>

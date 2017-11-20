@@ -9,15 +9,11 @@
  */
 function aml_module_attributes($attributes): string
 {
-    static $count = 0;
-    $count++;
-
     $attributes = collect();
     $classes = collect(['am']);
 
-    if ($count === 1) {
-        $classes->push('am--first');
-    }
+    $layout = sanitize_title(str_replace('_', '-', get_row_layout()));
+    $classes->push('am--' . $layout);
 
     $classes->push('am--bg-' . sanitize_title(get_sub_field('background_color') ? : 'white'));
     $classes->push('am--txt-' . sanitize_title(get_sub_field('text_color') ? : 'primary'));
@@ -26,8 +22,21 @@ function aml_module_attributes($attributes): string
         $classes->push('am--content-' . sanitize_title(get_sub_field('content_width') ? : 'lg'));
     }
 
-    $layout = sanitize_title(str_replace('_', '-', get_row_layout()));
-    $classes->push('am--' . $layout);
+    if ($align_x = get_sub_field('horizontal_alignment')) {
+        $classes->push('am--align-x-' . $align_x);
+    }
+    if ($align_y = get_sub_field('vertical_alignment')) {
+        $classes->push('am--align-y-' . $align_y);
+    }
+
+    if (get_sub_field('remove_top_padding')) $classes->push('am--padding-top-0');
+    if (get_sub_field('remove_bottom_padding')) $classes->push('am--padding-bottom-0');
+
+    static $count = 0;
+    $count++;
+    if ($count === 1) {
+        $classes->push('am--first');
+    }
 
     $attributes->put('class', $classes->implode(' '));
 
@@ -55,7 +64,7 @@ function aml_button_attributes(): string
 {
     $attributes = collect();
 
-    $link = get_sub_field('button_link');
+    $link = get_sub_field('link');
     $attributes->put('href', $link);
 
     if (parse_url($link, PHP_URL_HOST) && parse_url($link, PHP_URL_HOST) !== $_SERVER['HTTP_HOST']) {

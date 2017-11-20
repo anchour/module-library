@@ -7,6 +7,7 @@
  */
 
 $aml_path = plugin_dir_path(__FILE__);
+$partial_path = $aml_path . 'module-templates/_partials/';
 
 include 'src/setup.php';
 include 'src/filters.php';
