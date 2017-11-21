@@ -40,3 +40,19 @@
     align-items: flex-end;
   }
 }
+
+.am--content-lg {
+  .crust {
+    max-width: 1000px;
+  }
+}
+.am--content-md {
+  .crust {
+    max-width: 678px;
+  }
+}
+.am--content-sm {
+  .crust {
+    max-width: 480px;
+  }
+}
