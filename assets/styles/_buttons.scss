@@ -1,0 +1,22 @@
+.am-button {
+  border: 0 none;
+  border-radius: 0;
+  display: inline-block;
+  padding: 12px 20px;
+  -webkit-appearance: none;
+}
+
+.am-button--white {
+  background-color: $brand-white;
+  color: $brand-primary;
+}
+
+.am-button--primary {
+  background-color: $brand-primary;
+  color: $brand-white;
+}
+
+.am-button--secondary {
+  background-color: $brand-secondary;
+  color: $brand-primary;
+}

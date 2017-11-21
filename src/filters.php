@@ -71,8 +71,8 @@ function aml_button_attributes(): string
         $attributes->put('target', "_blank");
     }
 
-    $classes = collect(['button']);
-    $classes->push('button--bg-' . sanitize_title(get_sub_field('background_color') ? : 'primary'));
+    $classes = collect(['am-button']);
+    $classes->push('am-button--' . sanitize_title(get_sub_field('button_color') ? : 'primary'));
     $attributes->put('class', $classes->implode(' '));
 
     return $attributes->map(function ($value, $key) {
@@ -81,4 +81,31 @@ function aml_button_attributes(): string
 }
 
 add_filter('AML/ButtonAttributes', 'aml_button_attributes');
+
+function lazyloaded_image_tag(int $imageId = 0, $size = 'large', $attrs = []): string
+{
+    if ($imageId === 0) {
+        return '';
+    }
+
+    $file      = get_attached_file($imageId);
+    $extension = pathinfo($file, PATHINFO_EXTENSION);
+
+    if ($extension === 'svg') {
+        ob_start();
+
+        include $file;
+
+        return ob_get_clean();
+    }
+
+    $tag = wp_get_attachment_image($imageId, $size, false, $attrs);
+    $tag = str_replace('src=', 'data-original=', $tag);
+    $tag = str_replace('data-original=', 'src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABAQMAAAAl21bKAAAAA1BMVEWysrKSPAk+AAAACklEQVQIHWNgAAAAAgABz8g15QAAAABJRU5ErkJggg==" data-original=', $tag);
+    $tag = str_replace('srcset=', 'data-original-set=', $tag);
+
+    return $tag;
+}
+
+add_filter('AML/LazyloadedImage', __NAMESPACE__ . '\\lazyloaded_image_tag', 10, 3);
 ?>
