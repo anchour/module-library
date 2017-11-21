@@ -22,15 +22,14 @@ function aml_module_attributes($attributes): string
         $classes->push('am--content-' . sanitize_title(get_sub_field('content_width') ? : 'lg'));
     }
 
-    if ($align_x = get_sub_field('horizontal_alignment')) {
-        $classes->push('am--align-x-' . $align_x);
-    }
-    if ($align_y = get_sub_field('vertical_alignment')) {
-        $classes->push('am--align-y-' . $align_y);
-    }
+    if ($align_x = get_sub_field('horizontal_alignment')) $classes->push('am--align-x-' . $align_x);
+    if ($align_y = get_sub_field('vertical_alignment')) $classes->push('am--align-y-' . $align_y);
 
     if (get_sub_field('remove_top_padding')) $classes->push('am--padding-top-0');
     if (get_sub_field('remove_bottom_padding')) $classes->push('am--padding-bottom-0');
+
+    if (get_sub_field('image_first')) $classes->push('am--flip-columns');
+    if (get_sub_field('overlapping_columns')) $classes->push('am--column-overlap');
 
     static $count = 0;
     $count++;
