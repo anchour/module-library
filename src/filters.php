@@ -18,6 +18,8 @@ function aml_module_attributes($attributes): string
     $classes->push('am--bg-' . sanitize_title(get_sub_field('background_color') ? : 'white'));
     $classes->push('am--txt-' . sanitize_title(get_sub_field('text_color') ? : 'primary'));
 
+    if ($txt_bg = get_sub_field('text_section_background')) $classes->push('am--text-section-bg-' . $txt_bg);
+
     if (get_row_layout() == 'one_column_text') {
         $classes->push('am--content-' . sanitize_title(get_sub_field('content_width') ? : 'lg'));
     }
