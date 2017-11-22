@@ -106,5 +106,35 @@ function lazyloaded_image_tag(int $imageId = 0, $size = 'large', $attrs = []): s
     return $tag;
 }
 
-add_filter('AML/LazyloadedImage', __NAMESPACE__ . '\\lazyloaded_image_tag', 10, 3);
+add_filter('AML/LazyloadedImage', 'lazyloaded_image_tag', 10, 3);
+
+
+function icon_group_content_order(string $placement, int $i): string
+{
+    $fields = array();
+    switch ($placement) {
+        case 'top':
+        case 'left':
+            $fields = array('image', 'header', 'content', 'fake-button');
+            break;
+
+        case 'bottom':
+        case 'right':
+            $fields = array('header', 'content', 'fake-button', 'image');
+            break;
+
+        case 'middle':
+            $fields = array('header', 'image', 'content', 'fake-button');
+            break;
+    }
+
+    return $fields[$i];
+}
+
+add_filter('AML/IconGroupContentOrder', 'icon_group_content_order', 10, 2);
+
+// image
+// header
+// content
+// fake-button
 ?>
