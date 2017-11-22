@@ -31,6 +31,9 @@ function aml_module_attributes($attributes): string
     if (get_sub_field('image_first')) $classes->push('am--flip-columns');
     if (get_sub_field('overlapping_columns')) $classes->push('am--column-overlap');
 
+    if ($placement = get_sub_field('icon_placement')) $classes->push('am--icon-placement-' . $placement);
+    if ($sections = get_sub_field('sections_per_row')) $classes->push('am--sections-per-row--' . $sections);
+
     static $count = 0;
     $count++;
     if ($count === 1) {
@@ -132,9 +135,4 @@ function icon_group_content_order(string $placement, int $i): string
 }
 
 add_filter('AML/IconGroupContentOrder', 'icon_group_content_order', 10, 2);
-
-// image
-// header
-// content
-// fake-button
 ?>
