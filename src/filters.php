@@ -13,33 +13,33 @@ function aml_module_attributes($attributes): string
     $classes = collect(['am']);
 
     $layout = sanitize_title(str_replace('_', '-', get_row_layout()));
-    $classes->push('am--' . $layout);
+    $classes->push('am-' . $layout);
 
-    $classes->push('am--bg-' . sanitize_title(get_sub_field('background_color') ? : 'white'));
-    $classes->push('am--txt-' . sanitize_title(get_sub_field('text_color') ? : 'primary'));
+    $classes->push('am-bg-' . sanitize_title(get_sub_field('background_color') ? : 'white'));
+    $classes->push('am-txt-' . sanitize_title(get_sub_field('text_color') ? : 'primary'));
 
-    if ($txt_bg = get_sub_field('text_section_background')) $classes->push('am--text-section-bg-' . $txt_bg);
+    if ($txt_bg = get_sub_field('text_section_background')) $classes->push('am-text-section-bg-' . $txt_bg);
 
-    if (get_row_layout() == 'one_column_text') {
-        $classes->push('am--content-' . sanitize_title(get_sub_field('content_width') ? : 'lg'));
-    }
+    if ($width = get_sub_field('content_width')) $classes->push('am-content-width-' . $width);
+    if ($height = get_sub_field('content_height')) $classes->push('am-content-height-' . $height);
 
-    if ($align_x = get_sub_field('horizontal_alignment')) $classes->push('am--align-x-' . $align_x);
-    if ($align_y = get_sub_field('vertical_alignment')) $classes->push('am--align-y-' . $align_y);
 
-    if (get_sub_field('remove_top_padding')) $classes->push('am--padding-top-0');
-    if (get_sub_field('remove_bottom_padding')) $classes->push('am--padding-bottom-0');
+    if ($align_x = get_sub_field('horizontal_alignment')) $classes->push('am-align-x-' . $align_x);
+    if ($align_y = get_sub_field('vertical_alignment')) $classes->push('am-align-y-' . $align_y);
 
-    if (get_sub_field('image_first')) $classes->push('am--flip-columns');
-    if (get_sub_field('overlapping_columns')) $classes->push('am--column-overlap');
+    if (get_sub_field('remove_top_padding')) $classes->push('am-padding-top-0');
+    if (get_sub_field('remove_bottom_padding')) $classes->push('am-padding-bottom-0');
 
-    if ($placement = get_sub_field('icon_placement')) $classes->push('am--icon-placement-' . $placement);
-    if ($sections = get_sub_field('sections_per_row')) $classes->push('am--sections-per-row--' . $sections);
+    if (get_sub_field('image_first')) $classes->push('am-flip-columns');
+    if (get_sub_field('overlapping_columns')) $classes->push('am-column-overlap');
+
+    if ($placement = get_sub_field('icon_placement')) $classes->push('am-icon-placement-' . $placement);
+    if ($sections = get_sub_field('sections_per_row')) $classes->push('am-sections-per-row-' . $sections);
 
     static $count = 0;
     $count++;
     if ($count === 1) {
-        $classes->push('am--first');
+        $classes->push('am-first');
     }
 
     $attributes->put('class', $classes->implode(' '));
@@ -76,7 +76,7 @@ function aml_button_attributes(): string
     }
 
     $classes = collect(['am-button']);
-    $classes->push('am-button--' . sanitize_title(get_sub_field('button_color') ? : 'primary'));
+    $classes->push('am-button-' . sanitize_title(get_sub_field('button_color') ? : 'primary'));
     $attributes->put('class', $classes->implode(' '));
 
     return $attributes->map(function ($value, $key) {
