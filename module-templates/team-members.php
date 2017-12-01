@@ -10,11 +10,11 @@ include $GLOBALS['partial_path'] . 'title.php';
             <div class="am-column">
                 <div class="am-column-inner" style="background-image:url(<?=get_the_post_thumbnail_url($member->ID)?>);"></div>
                 <article>
-                    <span class="hover-push-up">
+                    <span class="am-hover-push-up">
                         <h4><?=$member->post_title?></h4>
                         <label><?=get_field('title', $member->ID)?></label>
                     </span>
-                    <span class="hover-show">
+                    <span class="am-hover-show">
                         <?php if ($btn_txt): ?>
                             <a href="<?=$member->guid?>" class="am-button am-button-<?=$btn_color?>"><?=$btn_txt?></a>
                         <?php endif; ?>
