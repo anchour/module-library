@@ -1,6 +1,7 @@
 <?php
 $btn_color = get_sub_field('button_color');
 $btn_txt = get_sub_field('button_text');
+$hollow = get_sub_field('hollow') ? ' am-button-hollow' : '';
 
 include $GLOBALS['partial_path'] . 'title.php';
 ?>
@@ -16,7 +17,7 @@ include $GLOBALS['partial_path'] . 'title.php';
                     </span>
                     <span class="am-hover-show">
                         <?php if ($btn_txt): ?>
-                            <a href="<?=$member->guid?>" class="am-button am-button-<?=$btn_color?>"><?=$btn_txt?></a>
+                            <a href="<?=$member->guid?>" class="am-button am-button-<?=$btn_color?><?=$hollow?>"><?=$btn_txt?></a>
                         <?php endif; ?>
                     </span>
                 </article>

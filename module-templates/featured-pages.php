@@ -1,6 +1,7 @@
 <?php
 $btn_color = get_sub_field('button_color');
 $btn_txt = get_sub_field('button_text');
+$hollow = get_sub_field('hollow') ? ' am-button-hollow' : '';
 ?>
 <?php if($pages = get_sub_field('pages')): ?>
     <div class="am-column-wrap am-flex-item-wrap">
@@ -13,7 +14,7 @@ $btn_txt = get_sub_field('button_text');
                             <span class="am-hover-show">
                                 <?=$page->post_content?>
                                 <?php if ($btn_txt): ?>
-                                    <a href="<?=$page->guid?>" class="am-button am-button-<?=$btn_color?>"><?=$btn_txt?></a>
+                                    <a href="<?=$page->guid?>" class="am-button am-button-<?=$btn_color?><?=$hollow?>"><?=$btn_txt?></a>
                                 <?php endif; ?>
                             </span>
                         </span>

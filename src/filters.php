@@ -77,6 +77,8 @@ function aml_button_attributes(): string
 
     $classes = collect(['am-button']);
     $classes->push('am-button-' . sanitize_title(get_sub_field('button_color') ? : 'primary'));
+    if (get_sub_field('hollow')) $classes->push('am-button-hollow');
+
     $attributes->put('class', $classes->implode(' '));
 
     return $attributes->map(function ($value, $key) {
