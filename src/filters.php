@@ -23,6 +23,7 @@ function aml_module_attributes($attributes): string
     if ($width = get_sub_field('content_width')) $classes->push('am-content-width-' . $width);
     if ($height = get_sub_field('content_height')) $classes->push('am-content-height-' . $height);
 
+    if ($columns = get_sub_field('columns')) $classes->push('am-column-count-' . count($columns));
 
     if ($align_x = get_sub_field('horizontal_alignment')) $classes->push('am-align-x-' . $align_x);
     if ($align_y = get_sub_field('vertical_alignment')) $classes->push('am-align-y-' . $align_y);
