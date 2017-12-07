@@ -50,6 +50,8 @@ function aml_module_attributes($attributes): string
         $attributes->put('style', 'background-image:url(' . $img . ');');
     }
 
+    if ($id = get_sub_field('id')) $attributes->put('id', $id);
+
     return $attributes->map(function ($value, $key) {
         return "$key=\"$value\"";
     })->implode(' ');
