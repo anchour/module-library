@@ -4,13 +4,13 @@
     "type": "project",
     "license": "none",
     "private": true,
-    "require": {},
+    "require": {
+        "php": ">=7",
+        "illuminate/support": "^5.5"
+    },
     "autoload": {
         "psr-4": {
-            "Anchour\\ModuleLibrary\\": "src/"
-        },
-        "files": [
-            "lib/filters.php"
-        ]
+            "Anchour\\ModuleLibrary\\": ["src/", "lib/"]
+        }
     }
 }
