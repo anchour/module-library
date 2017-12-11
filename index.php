@@ -20,9 +20,9 @@ require __DIR__ . '/vendor/autoload.php';
  *
  * @return void
  */
-function includeModules()
+function module_base()
 {
-    include 'module-base.php';
+    include __DIR__ . '/module-base.php';
 }
 
-add_action('get_footer', __NAMESPACE__ . '\\includeModules');
+add_action('get_footer', __NAMESPACE__ . '\\module_base');
