@@ -1,6 +1,19 @@
 <?php
+function get_common_classes(): string
+{
+    $classes = collect();
+
+    if ($bg_color = get_sub_field('background_color')) $classes->push('am-bg-' . $bg_color);
+    if ($txt_color = get_sub_field('text_color')) $classes->push('am-txt-' . $txt_color);
+
+    if ($align_x = get_sub_field('horizontal_alignment')) $classes->push('am-align-x-' . $align_x);
+    if ($align_y = get_sub_field('vertical_alignment')) $classes->push('am-align-y-' . $align_y);
+
+    return $classes->implode(' ');
+}
+
 /**
- * Gets the attributes/classes for each page row in the flexible page layout.
+ * Gets the attributes/classes for each module in the flexible page layout.
  *
  * @param     $attributes
  * @param int $count
@@ -15,8 +28,7 @@ function aml_module_attributes($attributes): string
     $layout = sanitize_title(str_replace('_', '-', get_row_layout()));
     $classes->push('am-' . $layout);
 
-    $classes->push('am-bg-' . sanitize_title(get_sub_field('background_color') ? : 'white'));
-    $classes->push('am-txt-' . sanitize_title(get_sub_field('text_color') ? : 'primary'));
+    $classes->push(get_common_classes());
 
     if ($txt_bg = get_sub_field('text_section_background')) $classes->push('am-text-section-bg-' . $txt_bg);
 
@@ -24,9 +36,6 @@ function aml_module_attributes($attributes): string
     if ($height = get_sub_field('content_height')) $classes->push('am-content-height-' . $height);
 
     if ($columns = get_sub_field('columns')) $classes->push('am-column-count-' . count($columns));
-
-    if ($align_x = get_sub_field('horizontal_alignment')) $classes->push('am-align-x-' . $align_x);
-    if ($align_y = get_sub_field('vertical_alignment')) $classes->push('am-align-y-' . $align_y);
 
     if (get_sub_field('remove_top_padding')) $classes->push('am-padding-top-0');
     if (get_sub_field('remove_bottom_padding')) $classes->push('am-padding-bottom-0');
@@ -60,7 +69,36 @@ function aml_module_attributes($attributes): string
 add_filter('AML/ModuleAttributes', 'aml_module_attributes');
 
 /**
- * Gets the attributes/classes for each page row in the flexible page layout.
+ * Gets the attributes/classes for each column in the split section module.
+ *
+ * @param     $attributes
+ * @param int $count
+ *
+ * @return string
+ */
+function aml_split_section_attributes($attributes): string
+{
+    $attributes = collect();
+    $classes = collect(['am-column']);
+
+    $classes->push(get_common_classes());
+
+    $attributes->put('class', $classes->implode(' '));
+
+    if (get_sub_field('background_image')) {
+        $img = get_sub_field('background_image');
+        $attributes->put('style', 'background-image:url(' . $img . ');');
+    }
+
+    return $attributes->map(function ($value, $key) {
+        return "$key=\"$value\"";
+    })->implode(' ');
+}
+
+add_filter('AML/SplitSectionAttributes', 'aml_split_section_attributes');
+
+/**
+ * Gets the attributes/classes for each button in the flexible page layout.
  *
  * @param     $attributes
  * @param int $count
