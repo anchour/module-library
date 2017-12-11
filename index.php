@@ -10,7 +10,12 @@ namespace Anchour\ModuleLibrary;
  */
 
 $aml_path = plugin_dir_path(__FILE__);
-$partial_path = $aml_path . 'module-templates/partials/';
+$templates_path = $aml_path . 'module-templates/';
+$partial_path = $templates_path . 'partials/';
+
+define('AML_PLUGIN_ROOT', $aml_path);
+define('AML_TEMPLATES_PATH', $templates_path);
+define('AML_PARTIALS_PATH', $partial_path);
 
 require __DIR__ . '/vendor/autoload.php';
 
