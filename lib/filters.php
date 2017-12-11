@@ -13,7 +13,17 @@ namespace Anchour\ModuleLibrary;
 function aml_module_attributes($attributes): string
 {
     $attributes = collect();
-    $classes = collect(['am']);
+
+    // Our base class that is added to the "class" attribute.
+    $baseClass = ['am'];
+
+    // If a class is passed in to this filter, we want to
+    // add those class attributes to our base 'am' class name.
+    if (array_key_exists('class', $attributes)) {
+        $baseClass[] = $attributes['class'];
+    }
+
+    $classes = collect($baseClass);
 
     $layout = sanitize_title(str_replace('_', '-', get_row_layout()));
     $classes->push('am-' . $layout);
@@ -70,15 +80,21 @@ function aml_module_attributes($attributes): string
         $classes->push('am-first');
     }
 
+    // Our custom ID on the page row - add this as a unique class
+    // on our section so it can be styled in a way that is more
+    // performant than using an #id for our CSS selectors.
+    if ($id = get_sub_field('id')) {
+        $attributes->put('id', $id);
+
+        // Add our "ID" as a
+        $classes->push('am-' . $id);
+    }
+
     $attributes->put('class', $classes->implode(' '));
 
     if (get_sub_field('background_image')) {
         $img = get_sub_field('background_image');
         $attributes->put('style', 'background-image:url(' . $img . ');');
-    }
-
-    if ($id = get_sub_field('id')) {
-        $attributes->put('id', $id);
     }
 
     return $attributes->map(function ($value, $key) {
