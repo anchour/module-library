@@ -1,14 +1,17 @@
 <?php
 
-if (!have_rows('accordions')) {
-    return;
-}
+use Anchour\ModuleLibrary\Template;
+
 ?>
 
 <div class="am-content-width-md">
     <div class="crust">
 
-    <?php while (have_rows('accordions')): the_row(); ?>
+    <?php
+
+    Template::get('partials/title');
+
+    if (have_rows('accordions')): while (have_rows('accordions')): the_row(); ?>
 
         <div class="am-accordion">
             <div class="am-accordion-toggle">
@@ -29,7 +32,7 @@ if (!have_rows('accordions')) {
             </div>
         </div>
 
-    <?php endwhile; ?>
+    <?php endwhile; endif; ?>
 
     </div>
 </div>
