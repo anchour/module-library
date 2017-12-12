@@ -9,6 +9,11 @@ function get_common_classes(): string
     if ($txt_color = get_sub_field('text_color')) {
         $classes->push('am-txt-' . $txt_color);
     }
+
+    if ($header_color = \get_sub_field('header_color')) {
+        $classes->push('am-header-' . $header_color);
+    }
+
     if ($bg_color = get_sub_field('background_color')) {
         $classes->push('am-bg-' . $bg_color);
     }
@@ -29,7 +34,6 @@ function get_common_classes(): string
 
     return $classes->implode(' ');
 }
-
 
 /**
  * Gets the attributes/classes for each module in the flexible page layout.
