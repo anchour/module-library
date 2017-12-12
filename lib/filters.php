@@ -6,11 +6,11 @@ function get_common_classes(): string
 {
     $classes = collect();
 
-    if ($bg_color = get_sub_field('background_color')) {
-      $classes->push('am-bg-' . $bg_color);
-    }
     if ($txt_color = get_sub_field('text_color')) {
-      $classes->push('am-txt-' . $txt_color);
+        $classes->push('am-txt-' . $txt_color);
+    }
+    if ($bg_color = get_sub_field('background_color')) {
+        $classes->push('am-bg-' . $bg_color);
     }
 
     if ($align_x = get_sub_field('horizontal_alignment')) {
@@ -18,6 +18,13 @@ function get_common_classes(): string
     }
     if ($align_y = get_sub_field('vertical_alignment')) {
         $classes->push('am-align-y-' . $align_y);
+    }
+
+    if (get_sub_field('background_image')) {
+        $classes->push('am-bg-img');
+        if ($bg_overlay = get_sub_field('background_overlay')) {
+            $classes->push('am-overlay-' . $bg_overlay);
+        }
     }
 
     return $classes->implode(' ');
@@ -106,8 +113,7 @@ function aml_module_attributes($attributes): string
 
     $attributes->put('class', $classes->implode(' '));
 
-    if (get_sub_field('background_image')) {
-        $img = get_sub_field('background_image');
+    if ($img = get_sub_field('background_image')) {
         $attributes->put('style', 'background-image:url(' . $img . ');');
     }
 
@@ -135,8 +141,7 @@ function aml_split_section_attributes($attributes): string
 
     $attributes->put('class', $classes->implode(' '));
 
-    if (get_sub_field('background_image')) {
-        $img = get_sub_field('background_image');
+    if ($img = get_sub_field('background_image')) {
         $attributes->put('style', 'background-image:url(' . $img . ');');
     }
 
