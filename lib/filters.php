@@ -123,7 +123,15 @@ function aml_module_attributes($attributes): string
         $attributes->put('style', 'background-image:url(' . $img . ');');
     }
 
-    return $attributes->map(function ($value, $key) {
+    $attributes = apply_filters('AML/additional_module_attributes', $attributes->toArray(), $layout);
+
+    // The filter could return an array or another collection; if it's
+    // an array, convert it to another collection.
+    if (is_array($attributes)) {
+        $attributes = collect($attributes);
+    }
+
+    return collect($attributes)->map(function ($value, $key) {
         return "$key=\"$value\"";
     })->implode(' ');
 }
