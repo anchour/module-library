@@ -145,7 +145,7 @@ function aml_split_section_attributes($attributes): string
     })->implode(' ');
 }
 
-add_filter('AML/SplitSectionAttributes', 'aml_split_section_attributes');
+add_filter('AML/SplitSectionAttributes', __NAMESPACE__ . '\\aml_split_section_attributes');
 
 /**
  * Gets the attributes/classes for each page row in the flexible page layout.
