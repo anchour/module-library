@@ -9,7 +9,7 @@ Template::get('partials/title'); ?>
         <?php
         Template::get('partials/header');
         Template::get('partials/content');
-        Template::get('partials/button');
+        Template::get('partials/buttons');
         ?>
     </div>
 
