@@ -7,13 +7,19 @@ function get_common_classes(): string
     $classes = collect();
 
     if ($txt_color = get_sub_field('text_color')) {
-        $classes->push('am-txt-' . $txt_color);
+        $color = is_array($txt_color) ? $txt_color[0] : $txt_color;
+
+        $classes->push('am-txt-' . $color);
+
+        unset($color);
     }
 
     if ($header_color = get_sub_field('header_color')) {
         $color = is_array($header_color) ? $header_color[0] : $header_color;
 
         $classes->push('am-header-' . $color);
+
+        unset($color);
     }
 
     if ($bg_color = get_sub_field('background_color')) {
