@@ -8,8 +8,10 @@ if ($testimonials = get_sub_field('testimonials')): ?>
     <div class="am-testimonial-wrap">
         <?php foreach ($testimonials as $testimonial): ?>
             <article class="am-testimonial">
-                <?=$testimonial->post_content?>
-                <label>- <?=$testimonial->post_title?></label>
+                <div class="am-content">
+                    <?=$testimonial->post_content?>
+                    <label>- <?=$testimonial->post_title?></label>
+                </div>
             </article>
         <?php endforeach; ?>
     </div>
