@@ -11,7 +11,9 @@ function get_common_classes(): string
     }
 
     if ($header_color = get_sub_field('header_color')) {
-        $classes->push('am-header-' . is_array($header_color) ? $header_color[0] : $header_color);
+        $color = is_array($header_color) ? $header_color[0] : $header_color;
+
+        $classes->push('am-header-' . $color);
     }
 
     if ($bg_color = get_sub_field('background_color')) {
