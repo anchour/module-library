@@ -32,7 +32,11 @@ use Anchour\ModuleLibrary\Template;
             </div>
         </div>
 
-    <?php endwhile; endif; ?>
+    <?php
+    endwhile; endif;
+
+    Template::get('partials/buttons');
+    ?>
 
     </div>
 </div>
