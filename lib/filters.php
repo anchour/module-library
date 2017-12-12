@@ -10,8 +10,8 @@ function get_common_classes(): string
         $classes->push('am-txt-' . $txt_color);
     }
 
-    if ($header_color = \get_sub_field('header_color')) {
-        $classes->push('am-header-' . $header_color);
+    if ($header_color = get_sub_field('header_color')) {
+        $classes->push('am-header-' . is_array($header_color) ? $header_color[0] : $header_color);
     }
 
     if ($bg_color = get_sub_field('background_color')) {
