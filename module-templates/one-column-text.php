@@ -1,9 +1,15 @@
+<?php
+
+use Anchour\ModuleLibrary\Template;
+
+?>
+
 <div class="am-flex-item-wrap am-column">
     <?php
-    include $GLOBALS['partial_path'] . 'title.php';
+    Template::get('partials/title');
 
-    include $GLOBALS['partial_path'] . 'content.php';
+    Template::get('partials/content');
 
-    include $GLOBALS['partial_path'] . 'buttons.php';
+    Template::get('partials/buttons');
     ?>
 </div>

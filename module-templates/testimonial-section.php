@@ -1,9 +1,12 @@
 <?php
-include $GLOBALS['partial_path'] . 'title.php';
 
-if($testimonials = get_sub_field('testimonials')): ?>
+use Anchour\ModuleLibrary\Template;
+
+Template::get('partials/title');
+
+if ($testimonials = get_sub_field('testimonials')): ?>
     <div class="am-testimonial-wrap">
-        <?php foreach($testimonials as $testimonial): ?>
+        <?php foreach ($testimonials as $testimonial): ?>
             <article class="am-testimonial">
                 <?=$testimonial->post_content?>
                 <label>- <?=$testimonial->post_title?></label>

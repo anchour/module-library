@@ -1,10 +1,16 @@
-<?php include $GLOBALS['partial_path'] . 'title.php'; ?>
+<?php
+
+use Anchour\ModuleLibrary\Template;
+
+Template::get('partials/title'); ?>
 
 <div class="am-flex-item-wrap">
     <div class="am-info-wrap">
-        <?php include $GLOBALS['partial_path'] . 'header.php'; ?>
-        <?php include $GLOBALS['partial_path'] . 'content.php'; ?>
-        <?php include $GLOBALS['partial_path'] . 'buttons.php'; ?>
+        <?php
+        Template::get('partials/header.php');
+        Template::get('partials/content.php');
+        Template::get('partials/button.php');
+        ?>
     </div>
 
     <?php if (have_rows('icon_sections')): ?>
@@ -16,8 +22,8 @@
                         <a href="<?=$link?>">
                     <?php endif; ?>
 
-                        <?php include $GLOBALS['partial_path'] . 'image.php'; ?>
-                        <?php include $GLOBALS['partial_path'] . 'content.php'; ?>
+                        <?php Template::get('partials/image'); ?>
+                        <?php Template::get('partials/content'); ?>
 
                     <?php if ($link): ?>
                         </a>

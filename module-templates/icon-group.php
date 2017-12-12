@@ -1,8 +1,12 @@
-<?php $placement = get_sub_field('icon_placement'); ?>
+<?php
 
-<?php include $GLOBALS['partial_path'] . 'title.php'; ?>
+use Anchour\ModuleLibrary\Template;
 
-<?php if (have_rows('icon_sections')): ?>
+$placement = get_sub_field('icon_placement');
+
+Template::get('partials/title');
+
+if (have_rows('icon_sections')): ?>
     <div class="am-flex-item-wrap am-column-wrap">
         <?php while (have_rows('icon_sections')): the_row(); ?>
             <div class="am-column">
@@ -11,7 +15,7 @@
                     <a href="<?=$link?>">
                 <?php endif; ?>
 
-                    <?php for ($i=0; $i < 4; $i++): ?>
+                    <?php for ($i = 0; $i < 4; $i++): ?>
                         <?php if (($placement == 'left' && $i == 1) || ($placement == 'right' && $i == 0)): ?>
                             <span class="am-icon-section-content">
                         <?php endif; ?>

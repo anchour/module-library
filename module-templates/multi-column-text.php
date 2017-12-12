@@ -1,15 +1,19 @@
-<?php include $GLOBALS['partial_path'] . 'title.php'; ?>
+<?php
 
-<?php if (have_rows('columns')): ?>
+use Anchour\ModuleLibrary\Template;
+
+Template::get('partials/title');
+
+if (have_rows('columns')): ?>
     <div class="am-flex-item-wrap am-column-wrap">
         <?php while (have_rows('columns')): the_row(); ?>
             <div class="am-column">
-                <?php include $GLOBALS['partial_path'] . 'header.php'; ?>
-                <?php include $GLOBALS['partial_path'] . 'content.php'; ?>
-                <?php include $GLOBALS['partial_path'] . 'buttons.php'; ?>
+                <?php Template::get('partials/header'); ?>
+                <?php Template::get('partials/content'); ?>
+                <?php Template::get('partials/buttons'); ?>
             </div>
         <?php endwhile; ?>
     </div>
 <?php endif; ?>
 
-<?php include $GLOBALS['partial_path'] . 'buttons.php'; ?>
+<?php Template::get('partials/buttons'); ?>

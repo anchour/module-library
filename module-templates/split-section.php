@@ -1,14 +1,18 @@
-<?php if(have_rows('columns')): ?>
+<?php
+
+use Anchour\ModuleLibrary\Template;
+
+if (have_rows('columns')): ?>
     <div class="am-column-wrap">
-        <?php while(have_rows('columns')): the_row(); ?>
+        <?php while (have_rows('columns')): the_row(); ?>
             <div <?=apply_filters('AML/SplitSectionAttributes', '')?>>
                 <div class="am-flex-item-wrap">
                     <?php
-                        include $GLOBALS['partial_path'] . 'header.php';
+                        Template::get('partials/header');
 
-                        include $GLOBALS['partial_path'] . 'content.php';
+                        Template::get('partials/content');
 
-                        include $GLOBALS['partial_path'] . 'buttons.php';
+                        Template::get('partials/buttons');
                     ?>
                 </div>
             </div>

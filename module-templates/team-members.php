@@ -1,13 +1,16 @@
 <?php
+
+use Anchour\ModuleLibrary\Template;
+
 $btn_color = get_sub_field('button_color');
 $btn_txt = get_sub_field('button_text');
 $hollow = get_sub_field('hollow') ? ' am-button-hollow' : '';
 
-include $GLOBALS['partial_path'] . 'title.php';
+Template::get('partials/title');
 ?>
-<?php if($members = get_sub_field('team_members')): ?>
+<?php if ($members = get_sub_field('team_members')): ?>
     <div class="am-column-wrap am-flex-item-wrap">
-        <?php foreach($members as $member): ?>
+        <?php foreach ($members as $member): ?>
             <div class="am-column">
                 <div class="am-column-inner" style="background-image:url(<?=get_the_post_thumbnail_url($member->ID)?>);"></div>
                 <article>

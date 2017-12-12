@@ -1,3 +1,5 @@
-<?php include $GLOBALS['partial_path'] . 'title.php'; ?>
+<?php
+use Anchour\ModuleLibrary\Template;
 
-<?php include $GLOBALS['partial_path'] . 'gallery.php'; ?>
+Template::get('partials/title');
+Template::get('partials/gallery');

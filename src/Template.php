@@ -11,7 +11,7 @@ class Template
      */
     public static function get($name)
     {
-        $layout = str_replace('_', '-', get_row_layout());
+        $layout = str_replace('_', '-', $name);
 
         $overrides = static::templateOverrides();
 

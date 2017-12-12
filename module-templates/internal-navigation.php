@@ -1,5 +1,6 @@
 <?php
-include $GLOBALS['partial_path'] . 'title.php';
+use Anchour\ModuleLibrary\Template;
 
-include $GLOBALS['partial_path'] . 'buttons.php';
-?>
+Template::get('partials/title');
+
+Template::get('partials/buttons');
