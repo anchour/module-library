@@ -7,9 +7,9 @@ Template::get('partials/title'); ?>
 <div class="am-flex-item-wrap">
     <div class="am-info-wrap">
         <?php
-        Template::get('partials/header.php');
-        Template::get('partials/content.php');
-        Template::get('partials/button.php');
+        Template::get('partials/header');
+        Template::get('partials/content');
+        Template::get('partials/button');
         ?>
     </div>
 
