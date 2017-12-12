@@ -12,7 +12,7 @@ if (have_rows('icon_sections')): ?>
             <div class="am-column">
 
                 <?php if ($link = get_sub_field('link')): ?>
-                    <a href="<?=$link?>">
+                    <a href="<?=$link?>" <?= get_sub_field('new_tab') ? 'target="_blank"' : '' ?>>
                 <?php endif; ?>
 
                     <?php for ($i = 0; $i < 4; $i++): ?>
