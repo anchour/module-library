@@ -1,18 +1,17 @@
-<?php if (have_rows('anchour_modules')): ?>
-    <?php while (have_rows('anchour_modules')): the_row(); ?>
+<?php
 
-        <section <?=apply_filters('AML/ModuleAttributes', '')?>>
-            <div class="crust">
-                <div class="mantle">
-                    <div class="core">
+$key = apply_filters('AML/ModuleRowsKey', 'anchour_modules');
 
-                        <?php $layout = str_replace('_', '-', get_row_layout()); ?>
-                        <?php include $GLOBALS['aml_path'] . 'module-templates/' . $layout . '.php'; ?>
+if (have_rows($key)): while (have_rows($key)): the_row(); ?>
 
-                    </div>
+    <section <?= apply_filters('AML/ModuleAttributes', '') ?>>
+        <div class="crust">
+            <div class="mantle">
+                <div class="core">
+                    <?php \Anchour\ModuleLibrary\Template::get(get_row_layout()); ?>
                 </div>
             </div>
-        </section>
+        </div>
+    </section>
 
-    <?php endwhile; ?>
-<?php endif; ?>
+<?php endwhile; endif;

@@ -1,0 +1,17 @@
+{
+    "name": "anchour/module-library",
+    "description": "Module library for WordPress; used in conjunction with ACF Pro.",
+    "type": "project",
+    "license": "none",
+    "private": true,
+    "require": {
+        "php": ">=7",
+        "illuminate/support": "^5.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Anchour\\ModuleLibrary\\": "src/"
+        },
+        "files": [ "lib/filters.php" ]
+    }
+}
