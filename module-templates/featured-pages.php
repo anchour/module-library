@@ -6,7 +6,7 @@ $hollow = get_sub_field('hollow') ? ' am-button-hollow' : '';
 <?php if($pages = get_sub_field('pages')): ?>
     <div class="am-column-wrap am-flex-item-wrap">
         <?php foreach($pages as $page): ?>
-            <div class="am-column">
+            <a class="am-column" href="<?=$page->guid?>">
                 <div class="am-column-inner" style="background-image:url(<?=get_the_post_thumbnail_url($page->ID)?>);">
                     <article>
                         <span class="am-article-inner">
@@ -14,13 +14,13 @@ $hollow = get_sub_field('hollow') ? ' am-button-hollow' : '';
                             <span class="am-hover-show">
                                 <?=$page->post_content?>
                                 <?php if ($btn_txt): ?>
-                                    <a href="<?=$page->guid?>" class="am-button am-button-<?=$btn_color?><?=$hollow?>"><?=$btn_txt?></a>
+                                    <span class="am-button am-button-<?=$btn_color?><?=$hollow?>"><?=$btn_txt?></span>
                                 <?php endif; ?>
                             </span>
                         </span>
                     </article>
                 </div>
-            </div>
+            </a>
         <?php endforeach; ?>
     </div>
 <?php endif; ?>
