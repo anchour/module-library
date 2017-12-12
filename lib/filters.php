@@ -76,6 +76,8 @@ function aml_module_attributes($attributes): string
     }
 
     if ($width = get_sub_field('content_width')) {
+        $width = is_array($width) ? $width[0] : $width;
+
         $classes->push('am-content-width-' . $width);
     }
     if ($height = get_sub_field('content_height')) {
