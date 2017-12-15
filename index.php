@@ -30,4 +30,4 @@ function module_base()
     include __DIR__ . '/module-base.php';
 }
 
-add_action('get_footer', __NAMESPACE__ . '\\module_base');
+\add_action('get_footer', __NAMESPACE__ . '\\module_base');
