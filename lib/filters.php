@@ -128,7 +128,7 @@ function aml_module_attributes($attributes): string
     })->implode(' ');
 }
 
-\add_filter('AML/ModuleAttributes', __NAMESPACE__ . '\\aml_module_attributes');
+add_filter('AML/ModuleAttributes', __NAMESPACE__ . '\\aml_module_attributes');
 
 /**
  * Gets the attributes/classes for each column in the split section module.
@@ -156,7 +156,7 @@ function aml_split_section_attributes($attributes): string
     })->implode(' ');
 }
 
-\add_filter('AML/SplitSectionAttributes', __NAMESPACE__ . '\\aml_split_section_attributes');
+add_filter('AML/SplitSectionAttributes', __NAMESPACE__ . '\\aml_split_section_attributes');
 
 /**
  * Gets the attributes/classes for each page row in the flexible page layout.
@@ -190,7 +190,7 @@ function aml_button_attributes(): string
     })->implode(' ');
 }
 
-\add_filter('AML/ButtonAttributes', __NAMESPACE__ . '\\aml_button_attributes');
+add_filter('AML/ButtonAttributes', __NAMESPACE__ . '\\aml_button_attributes');
 
 function lazyloaded_image_tag(int $imageId = 0, $size = 'large', $attrs = []): string
 {
@@ -217,7 +217,7 @@ function lazyloaded_image_tag(int $imageId = 0, $size = 'large', $attrs = []): s
     return $tag;
 }
 
-\add_filter('AML/LazyloadedImage', __NAMESPACE__ . '\\lazyloaded_image_tag', 10, 3);
+add_filter('AML/LazyloadedImage', __NAMESPACE__ . '\\lazyloaded_image_tag', 10, 3);
 
 function icon_group_content_order(string $placement, int $i): string
 {
@@ -241,4 +241,4 @@ function icon_group_content_order(string $placement, int $i): string
     return $fields[$i];
 }
 
-\add_filter('AML/IconGroupContentOrder', __NAMESPACE__ . '\\icon_group_content_order', 10, 2);
+add_filter('AML/IconGroupContentOrder', __NAMESPACE__ . '\\icon_group_content_order', 10, 2);
